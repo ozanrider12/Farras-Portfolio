@@ -8,3 +8,6 @@ Speech recognition merupakan kemampuan yang memungkinkan komputor dapat mengenal
 
 ## Text-to-Speech
 Text-to-Speech merupakan kemampuan yang memungkinkan komputor dapat mengucapkan suatu huruf (A, B, C), kata (Aku, Kamu, Mereka), ataupun kalimat (Ini Ibukota, Hello World). Pada penerapannya saya menggunakan model dari Microsoft Windows yang telah memiliki kemampuan berucap menggunakan bahasa Indonesia 
+
+## Cara Kerja
+Untuk cara kerja sendiri, 
