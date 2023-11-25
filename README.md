@@ -16,60 +16,60 @@ Text-to-Speech merupakan kemampuan yang memungkinkan komputor dapat mengucapkan 
 Untuk cara kerja sendiri, komputor akan menerima suara yang di ucapkan pengguna (sinyal analog) melalui michrophone. dari data ini kemudian komputornya mengubahnya menjadi sinyal digital yang dapat dibaca oleh komputor. dari data - data digital yang di dapatkan, komputor dapat mengenali huruf/kata/kalimat dari ucapan pengguna sebagai keywor (proses ini masuk ke dalam modul speech recognition). Setelah keyword didapatkan, maka kita dapat memasukkan dataset/database kata apa yang akan diucapkan yang akan dihasilkan oleh modul text-to-speech.
 
 ## Coding
-import speech_recognition as sr
-__import pyttsx3
+import speech_recognition as sr  
+import pyttsx3  
 
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
-engine.setProperty('rate', 155)
+engine = pyttsx3.init()  
+voices = engine.getProperty('voices')  
+engine.setProperty('voice', voices[1].id)  
+engine.setProperty('rate', 155)  
 
-def myCommand():
-  "listen for commands"
-  r = sr.Recognizer()
+def myCommand():  
+&nbsp; "listen for commands"  
+&nbsp; r = sr.Recognizer()  
   
-  with sr.Microphone() as source:
-    print('Sedang mendengarkan')
-    r.pause_threshold = 1
-    r.adjust_for_ambient_noise(source, duration=1)
-    audio = r.listen(source)
-  try:
-    command = r.recognize_google(audio, language="id-ID").lower()
-    print('Anda : ' + command + '\n')
-  except sr.UnknownValueError:
-    print('Suara anda tidak terdengar, silahkan ucapkan lagi')
-    command = myCommand();
-  return command
+&nbsp; with sr.Microphone() as source:  
+&ensp;&nbsp;&nbsp; print('Sedang mendengarkan')  
+&ensp;&nbsp;&nbsp; r.pause_threshold = 1  
+&ensp;&nbsp;&nbsp; r.adjust_for_ambient_noise(source, duration=1)  
+&ensp;&nbsp;&nbsp; audio = r.listen(source)  
+&nbsp; try:  
+&nbsp;&nbsp;&nbsp; command = r.recognize_google(audio, language="id-ID").lower()  
+&nbsp;&nbsp;&nbsp; print('Anda : ' + command + '\n')  
+&nbsp; except sr.UnknownValueError:  
+&nbsp;&nbsp;&nbsp; print('Suara anda tidak terdengar, silahkan ucapkan lagi')  
+&nbsp;&nbsp;&nbsp; command = myCommand();  
+&nbsp; return command  
 
-def pembuka(command):
-  global status
-  if 'Dataset Keyword Aktivasi Penggunaan' in command:
-    engine.say('Dataset Respon Komputor')
-    engine.runAndWait()
-    status = 1
-  else:
-    status = 0
-  pass
+def pembuka(command):  
+&nbsp; global status  
+&nbsp; if 'Dataset Keyword Aktivasi Penggunaan' in command:  
+&nbsp;&nbsp;&nbsp; engine.say('Dataset Respon Komputor')  
+&nbsp;&nbsp;&nbsp; engine.runAndWait()  
+&nbsp;&nbsp;&nbsp; status = 1  
+&nbsp; else:  
+&nbsp;&nbsp;&nbsp; status = 0  
+&nbsp; pass  
 
-def main(command):
-  if 'Dataset Keyword Pertanyaan' in command:
-    engine.say('Dataset Respon Komputor')
-    engine.runAndWait()
-    main(myCommand())
-
-  elif 'Dataset Keyword Pertanyaan' in command:
-    engine.say('Dataset Respon Komputor')
-    engine.runAndWait()
-    status = 0
-    assistan(myCommand())
+def main(command):  
+&nbsp; if 'Dataset Keyword Pertanyaan' in command:  
+&nbsp;&nbsp;&nbsp; engine.say('Dataset Respon Komputor')  
+&nbsp;&nbsp;&nbsp; engine.runAndWait()  
+&nbsp;&nbsp;&nbsp; main(myCommand())  
+  
+&nbsp; elif 'Dataset Keyword Pertanyaan' in command:  
+&nbsp;&nbsp;&nbsp; engine.say('Dataset Respon Komputor')  
+&nbsp;&nbsp;&nbsp; engine.runAndWait()  
+&nbsp;&nbsp;&nbsp; status = 0  
+&nbsp;&nbsp;&nbsp; assistan(myCommand())  
     
-  else:
-    engine.say('Dataset Respon Komputor')
-    engine.runAndWait()
-    main(myCommand())
+&nbsp; else:  
+&nbsp;&nbsp;&nbsp; engine.say('Dataset Respon Komputor')  
+&nbsp;&nbsp;&nbsp; engine.runAndWait()  
+&nbsp;&nbsp;&nbsp; main(myCommand())  
 
-while True:
-  pembuka(myCommand())
+while True:  
+&nbsp; pembuka(myCommand())  
   
-  if status == 1:
-    main(myCommand())
+&nbsp; if status == 1:  
+&nbsp;&nbsp;&nbsp; main(myCommand())  
