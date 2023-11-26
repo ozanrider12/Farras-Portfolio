@@ -73,7 +73,7 @@ def main(command):
 &nbsp;&nbsp;&nbsp; engine.runAndWait()  
 &nbsp;&nbsp;&nbsp; main(myCommand())  
 
-[Sama seperti sebelumnya, hanya di khususkan untuk mengakhiri penggunaan virtual assistant dan loop kembali ke function pembukan(commad)
+[Sama seperti sebelumnya, hanya di khususkan untuk mengakhiri penggunaan virtual assistant dan loop kembali ke function pembuka(commad)
 
 &nbsp; elif 'Dataset Keyword Pertanyaan' in command:  
 &nbsp;&nbsp;&nbsp; engine.say('Dataset Respon Komputor')  
